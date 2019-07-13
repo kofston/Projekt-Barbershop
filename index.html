@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BarberShop: Los Barberos!</title>
+    <script src="vue.js"></script>
+    <script src="index.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<div id="container">
+<div id="topBar">
+        <!-- <audio src="music/WildWestBackground.mp3" muted></audio> -->
+<span>Barber Shop</span>
+<img id="barberPole" src="images//barberPole.png">
+    <div id="scissors"></div>
+    <div id="shaver"></div>
+</div>
+<div id="contentContainer">
+
+<div id="navBarLeft">
+<div id="aboutUs">
+    <button class="button" id="aboutUsButton"><img id="scissors_about_us" src="images/scissors.png" width="150px" height="150px">O Nas</button>
+</div>
+<div id="price">
+        <button v-on:click="greet" class="button" id="priceButton"> <img id="razor_price" src="images/razor.png" width="150px" height="150px">Cennik</button> 
+</div>
+<div id="contact">
+        <button class="button" id="contactButton"> <img id="brush_contact" src="images/brush.png" width="150px" height="150px">Kontakt</button>
+</div>
+
+</div>
+
+
+
+<div id="content">
+<!-- <div v-bind:style="styleObject" id="PriceContent">
+    <div id="AnimationDivPrice"><img id="AnimationShotPrice"  src="images/wildwestshot2.gif"></div>
+    <div id="PriceTable">
+        CENNIK:
+        <div id="BoxPriceFrame">
+            <div id="WhiteThemeFrame">
+                Broda   30 zl<br>
+                Strzyzenie 50 zl<br>
+                Golenie 40 zl<br>
+                Broda+Strzyzenie 70 zl
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div v-bind:style="styleObject" id="AboutUsContent">
+
+    <div id="tapeContainer">
+<div id="aboutUsText">
+    <span>O nas:<br></span>
+    Barber Shop Wild West powstal aby zapewnic,kazdemu mezczyznie najlepszy wyglad,nie patrzac na kompromisy.To wlasnie u nas poczujesz sie jak na prawdziwym ranczo.Nasze 
+    dlugoletnie doswiadczenie zagwarantuje Ci ze koncowy efekt bedzie lepszy niz sie tego spodziewales.Nasz zespol profesjonalistow,polaczony ze znakomitym klimatem panujacym w lokalu pozwoli Ci poczuc sie prawdziwym mezczyzna.Wybierz nasz BarberShop,a zadbamy o twoj kazdy wlos ;)
+</div>
+
+    </div>
+    </div>
+    
+
+</div>
+
+
+
+<div id="navBarRight">
+    <div id="gallery">
+            <button class="buttonBigger" id="GalleryButton">  <img id="comb_gallery" src="images/comb.png" width="150px" height="150px">Nasze prace</button>
+    </div>
+    <div id="terminar">
+            <button class="buttonBigger" id="terminarButton">  <img id="moustache_terminar" src="images/moustache.png" width="150px" height="150px">Rezerwacja</button>
+    </div>
+
+
+
+</div>
+
+
+
+
+</div>
+<div id="footer"><span>Created by: Łukasz Konop 2019</span></div>
+</div>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
