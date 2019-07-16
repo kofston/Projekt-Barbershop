@@ -366,4 +366,165 @@ font-size: 14px;
 #aboutUsText>span{
     font-size: 50px;
 }
-  
+#firstBarberAboutUs{
+    width: 200px;
+    height: 200px;
+    float: right;
+    margin-top: 550px;
+    margin-right: 100px;
+    background-image:url("images/oldpaper.jpg");
+}
+#secondBarberAboutUs{
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin-top: 100px;
+    margin-left: 100px;
+    background-image: url("images/oldpaper.jpg");
+}
+.barbersSquare{
+    box-shadow: 30px 20px 10px #000000;
+    border-radius: 20px;
+    overflow: hidden;
+    color: black;
+    text-align: center;
+    font-size: 25px;
+    font-family: Saloon;
+    animation: tape-opacity 4s infinite;
+}
+.barberphoto{
+    margin-top: -26px;
+}
+#ContactContent{
+    width: 100%;
+    height: 100%;
+    background-image: url("images/telegram.jpg");
+    background-size: cover;
+    display: block;
+    padding: 50px;
+}
+#nameDIV{
+    width: 330px;
+    height: 60px;
+    margin-top:  260px;
+    margin-left: 410px;
+}
+#name,#mail,#phone
+{
+    width: 100%;
+    height: 100%;
+    font-size: 40px;
+    font-family: Saloon;
+    border: none;
+    background-color: rgba(255, 228, 196, 0.13);
+    outline: none;
+}
+#message{
+    width: 100%;
+    height: 100%;
+    font-size: 40px;
+    font-family: Saloon;
+    border: none;
+    background-color: rgba(255, 228, 196, 0.13);
+    outline: none;
+}
+#mailDIV{
+    width: 330px;
+    height: 60px;
+    float: right;
+    margin-top: -60px;
+    margin-right:400px;
+}
+#phoneDIV{
+    width: 330px;
+    height: 60px;
+    margin-left:620px;
+    margin-top: 30px;
+}
+#messageDIV{
+    width: 730px;
+    height: 210px;
+    margin-left: 100px;
+    margin-top: 65px;
+}
+#STEMPEL{
+    width: 500px;
+    height: 600px;
+    float: right;
+    margin-top: -700px;
+    background-image: url("images/STEMPEL.png");
+    background-size: cover;
+}
+#ContactMARK{
+    width: 200px;
+    height: 200px;
+    background-image: url("images/poststempel.png");
+    background-size: cover;
+    float: right;
+    margin-right: 180px;
+    margin-top: -220px;
+}
+#GalleryContent{
+    width: 100%;
+    height: 100%;
+}
+#myVideoGallery{
+    width: 100%;
+    height: 100%;
+}
+#GalleryFace1{
+    width: 80px;
+    height: 100px;
+    background-image: url("images/WANTED.png");
+    background-size: cover;
+    border-radius:5px;
+margin-top: -400px;
+margin-left: 390px;
+ opacity: 0.7;
+ animation: WANTED3 4.7s infinite;
+ animation-direction: alternate;
+}
+#GalleryFace2{
+    float: right;
+    width: 80px;
+    height: 100px;
+    background-image: url("images/WANTED.png");
+    background-size: cover;
+    border-radius:5px;
+margin-right: 25px;
+margin-bottom: 100px;
+ opacity: 0.7;
+ animation: WANTED2 3s infinite;
+ animation-direction: alternate;
+}
+#GalleryFace3{
+    width: 80px;
+    height: 100px;
+    background-image: url("images/WANTED.png");
+    background-size: cover;
+    border-radius:5px;
+ top: 480px;
+ left: 880px;
+ opacity: 0.7;
+ margin-top: -300px;
+ margin-left: 680px;
+ animation: WANTED4 6s infinite;
+ animation-direction: alternate;
+}
+#GalleryFace4{
+    width: 80px;
+    height: 100px;
+    background-image: url("images/WANTED.png");
+    background-size: cover;
+    border-radius:5px;
+float: right;
+margin-right: 290px;
+margin-top: -200px;
+ opacity: 0.7;
+ animation: WANTED1 4s infinite;
+ animation-direction: alternate;
+}
+@keyframes WANTED1 {0%{-webkit-transform:rotate(0);transform:rotate(0);-webkit-transform-origin:top;transform-origin:top}100%{-webkit-transform:rotate(90deg);transform:rotate(90deg);-webkit-transform-origin:top;transform-origin:top}}
+@keyframes WANTED2 {0%{-webkit-transform:rotate(0);transform:rotate(0);-webkit-transform-origin:top;transform-origin:top}100%{-webkit-transform:rotate(40deg);transform:rotate(40deg);-webkit-transform-origin:top;transform-origin:top}}
+@keyframes WANTED3 {0%{-webkit-transform:rotate(0);transform:rotate(0);-webkit-transform-origin:top;transform-origin:top}100%{-webkit-transform:rotate(-70deg);transform:rotate(-70deg);-webkit-transform-origin:top;transform-origin:top}}
+@keyframes WANTED4 {0%{-webkit-transform:rotate(0);transform:rotate(0);-webkit-transform-origin:top;transform-origin:top}100%{-webkit-transform:rotate(20deg);transform:rotate(20deg);-webkit-transform-origin:top;transform-origin:top}}
