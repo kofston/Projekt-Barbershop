@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BarberShop: Los Barberos!</title>
-    <script src="vue.js"></script>
-    <script src="index.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="index.js" defer></script>
     <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="mini-event-calendar.min.css">
+    <script src="mini-event-calendar.js"></script>
 </head>
 <body>
 <div id="container">
@@ -23,13 +24,13 @@
 
 <div id="navBarLeft">
 <div id="aboutUs">
-    <button class="button" id="aboutUsButton"><img id="scissors_about_us" src="images/scissors.png" width="150px" height="150px">O Nas</button>
+        <button class="button" id="aboutUsButton" onclick="AboutUS()"><img id="scissors_about_us" src="images/scissors.png" width="150px" height="150px">O Nas</button>
 </div>
 <div id="price">
-        <button v-on:click="greet" class="button" id="priceButton"> <img id="razor_price" src="images/razor.png" width="150px" height="150px">Cennik</button> 
+        <button v-on:click="ShowPrice" class="button" id="priceButton"onclick="Price()"> <img id="razor_price" src="images/razor.png" width="150px" height="150px">Cennik</button>
 </div>
 <div id="contact">
-        <button class="button" id="contactButton"> <img id="brush_contact" src="images/brush.png" width="150px" height="150px">Kontakt</button>
+        <button class="button" id="contactButton" onclick="Contact()"> <img id="brush_contact" src="images/brush.png" width="150px" height="150px">Kontakt</button>
 </div>
 
 </div>
@@ -40,36 +41,7 @@
 
 
 
-
-
-
-
-
-<!-- <div v-bind:style="styleObject" id="PriceContent">
-    <div id="AnimationDivPrice"><img id="AnimationShotPrice"  src="images/wildwestshot2.gif"></div>
-    <div id="PriceTable">
-        CENNIK:
-        <div id="BoxPriceFrame">
-            <div id="WhiteThemeFrame">
-                Broda   30 zl<br>
-                Strzyzenie 50 zl<br>
-                Golenie 40 zl<br>
-                Broda+Strzyzenie 70 zl
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-
-
-
-
-
-
-
-
-<!-- <div v-bind:style="styleObject" id="AboutUsContent">
+<div id="AboutUsContent">
         <div id="firstBarberAboutUs" class="barbersSquare">
             Bartek
             <img class="barberphoto" src="images/men1.png" width="200px" height="230px">
@@ -89,27 +61,44 @@
 </div>
     </div>
 
-    </div> -->
+    </div>
 
 
 
 
 
+<div id="PriceContent">
+    <div id="AnimationDivPrice"><img id="AnimationShotPrice"  src="images/wildwestshot2.gif"></div>
+    <div id="PriceTable">
+        CENNIK:
+        <div id="BoxPriceFrame">
+            <div id="WhiteThemeFrame">
+                Broda   30 zl<br>
+                Strzyzenie 50 zl<br>
+                Golenie 40 zl<br>
+                Broda+Strzyzenie 70 zl
+            </div>
+        </div>
+    </div>
+</div>
 
 
-<!-- <div id="ContactContent">
+
+
+<div id="ContactContent">
     <div id="nameDIV"><input id="name" type="text"></div>
     <div id="mailDIV"><input id="mail" type="mail"></div>
     <div id="phoneDIV"><input id="phone" type="number"></div>
 <div id="messageDIV"><textarea id="message"></textarea></div>
 <div id="STEMPEL"></div>
 <div id="ContactMARK"></div>
-</div> -->
+<button id="ContactSEND" onclick="DoStemp()">nadaj telegram</button>
+</div>
 
 
 
 <div id="GalleryContent">
-    <video autoplay muted loop id="myVideoGallery">
+    <video autoplay muted loop class="myVideoGallery">
         <source src="images/gallery_theme.mp4" type="video/mp4">
       </video>
 <div id="GalleryFace1"><button id="buttonGallery1"><div class="PhotoContainerGallery" id="P1"></div></button></div>
@@ -120,8 +109,66 @@
 
 
 
+</div>
+
+
+
+
+
+<div id="ReservationContent">
+    <div id="reserveBar">Ponizej mozesz zarezerwowac termin na swoja wizyte.Aby to uczynic wybierz barbera,rodzaj uslugi,oraz termin (o ile jest dostepny) a nastepnie kliknij przycisk rezerwuj.</div>
+    <video autoplay muted loop class="myVideoGalleryGun">
+        <source src="images/gunmanss.mp4" type="video/mp4">
+      </video>
+<div id="TableBackgroundReserv">
+      <div id="BarberContainerReserv">
+      <div id="firstBarberReservation" >
+        Bartek
+        <img class="barberphoto" src="images/men1.png" width="200px" height="230px">
+        </div>
+        <div id="secondBarberReservation" >
+        Konrad
+        <img class="barberphoto2" src="images/men2.png" width="200px" height="230px">
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="CHCKBX" onchange="WhatBarber()">
+                <span class="slider round"></span>
+              </label>
+        </div>
+
+        <div id="HaircutContainerReserv">
+Wybierz rodzaj uslugi<br>
+<select id="RegSelect" onchange="LastPrice()">
+    <option value="0"></option>
+    <option value="30">Strzyzenie Brody</option>
+    <option value="50">Strzyzenie Wlosow</option>
+    <option value="40">Golenie</option>
+    <option value="70">COMBO(Broda+Wlosy)</option>
+</select><br>
+Cena ostateczna:<br>
+<span id="YourPriceReserve">0</span> zl
+        </div>
+        <div id="CalendarContainerReserv">
+<div id="calendar">
 
 </div>
+     <button id="AcceptReservation">rezerwuj</button>       
+        </div>
+    </div>
+
+
+
+
+
+
+    
+</div>
+
+
+
+
+
+
 
 
 
@@ -131,12 +178,11 @@
 
 <div id="navBarRight">
     <div id="gallery">
-            <button class="buttonBigger" id="GalleryButton">  <img id="comb_gallery" src="images/comb.png" width="150px" height="150px">Nasze prace</button>
+            <button class="buttonBigger" id="GalleryButton" onclick="Gallery()">  <img id="comb_gallery" src="images/comb.png" width="150px" height="150px">Nasze prace</button>
     </div>
     <div id="terminar">
-            <button class="buttonBigger" id="terminarButton">  <img id="moustache_terminar" src="images/moustache.png" width="150px" height="150px">Rezerwacja</button>
+            <button class="buttonBigger" id="terminarButton" onclick="Reserv()">  <img id="moustache_terminar" src="images/moustache.png" width="150px" height="150px">Rezerwacja</button>
     </div>
-
 
 
 </div>
