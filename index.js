@@ -75,26 +75,17 @@ async function DoStemp() {
     }
     else alert('Pola nie zostały wypełnione prawidłowo!');
 }
-
-var db_events = [{
-    title: "Board members meeting",
-    date: new Date().getTime(),
-    link: "events.com/ev2"
-}];
-
 $(document).ready(function(){
     $("#calendar").MEC({
         calendar_link: "example.com/myCalendar",
-        events: db_events
+        events: EventsBartek
+    });
+    $("#calendar2").MEC({
+        calendar_link: "example.com/myCalendar",
+        events: EventsKonrad
     });
 });
 
-$(document).ready(function(){
-    $("#calendar2").MEC({
-        calendar_link: "example.com/myCalendar",
-        events: db_events
-    });
-});
 function LastPrice()
 {
    var price = $('#RegSelect').val();
@@ -105,10 +96,86 @@ function WhatBarber(){
     if(document.getElementById("CHCKBX").checked == true)
     {
         console.log("Konrad");
+        $('#calendar').attr('id', 'calendar2');
+        $('#AcceptReservation').css('background-color','rgba(100, 30, 30, 0.774)')
+        $("#calendar2").MEC({
+            calendar_link: "example.com/myCalendar",
+            events: EventsKonrad
+        });
         return 1;
     }
     else{
         console.log("Bartek");
+        $('#calendar2').attr('id', 'calendar');
+        $('#AcceptReservation').css('background-color','rgba(30, 100, 36, 0.774)')
+        $("#calendar").MEC({
+            calendar_link: "example.com/myCalendar",
+            events: EventsBartek
+        });
     }
 }
+async function GalleryBack()
+{
+    $('#GalleryBlackBackground').css('transition','opacity 2s');
+    $('#GalleryBlackBackground').css('opacity','0');
+    await sleep(2000);
+    $('#GalleryBlackBackground').css('display','none');
+    $('#ZoomPhotoGallery').css('width','0');
+}
+$(document).ready(function() {
+    $('#buttonGallery1').click(async function() {
+        var IdPhoto = $(this).attr("value");
+        $('.PhotoContainerGalleryZOOM').attr('id', IdPhoto);
+        $('#GalleryBlackBackground').css('transition','opacity 4s');
+        $('#GalleryBlackBackground').css('display','block');
+        await sleep(100);
+        $('#ZoomPhotoGallery').css('width','500px');
+        $('#GalleryBlackBackground').css('opacity','1');
+    });
+    $('#buttonGallery2').click(async function() {
+        var IdPhoto = $(this).attr("value");
+        $('.PhotoContainerGalleryZOOM').attr('id', IdPhoto);
+        $('#GalleryBlackBackground').css('transition','opacity 4s');
+        $('#GalleryBlackBackground').css('display','block');
+        await sleep(100);
+        $('#ZoomPhotoGallery').css('width','500px');
+        $('#GalleryBlackBackground').css('opacity','1');
+    });
+    $('#buttonGallery3').click(async function() {
+        var IdPhoto = $(this).attr("value");
+        $('.PhotoContainerGalleryZOOM').attr('id', IdPhoto);
+        $('#GalleryBlackBackground').css('transition','opacity 4s');
+        $('#GalleryBlackBackground').css('display','block');
+        await sleep(100);
+        $('#ZoomPhotoGallery').css('width','500px');
+        $('#GalleryBlackBackground').css('opacity','1');
+    });
+    $('#buttonGallery4').click(async function() {
+        var IdPhoto = $(this).attr("value");
+        $('.PhotoContainerGalleryZOOM').attr('id', IdPhoto);
+        $('#GalleryBlackBackground').css('transition','opacity 4s');
+        $('#GalleryBlackBackground').css('display','block');
+        await sleep(100);
+        $('#ZoomPhotoGallery').css('width','500px');
+        $('#GalleryBlackBackground').css('opacity','1');
+    });
+});
+var NewArray =[];
 
+
+function PassData() {
+    var mydata = $('#DateReserv').val();
+    console.log("moja data to:"+mydata);
+
+    var data = new Date(mydata);
+    console.log(data);
+    data = data.getTime();
+    NewArray.push({
+        title: "ZAJĘTE!",
+        date: data,
+    })
+
+    EventsBartek = NewArray;
+
+
+}
