@@ -160,22 +160,4 @@ $(document).ready(function() {
         $('#GalleryBlackBackground').css('opacity','1');
     });
 });
-var NewArray =[];
 
-
-function PassData() {
-    var mydata = $('#DateReserv').val();
-    console.log("moja data to:"+mydata);
-
-    var data = new Date(mydata);
-    console.log(data);
-    data = data.getTime();
-    NewArray.push({
-        title: "ZAJĘTE!",
-        date: data,
-    })
-
-    EventsBartek = NewArray;
-
-
-}

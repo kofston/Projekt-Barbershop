@@ -5,11 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BarberShop: Los Barberos!</title>
+    <?php
+    include ("ReservationDataBase.php");
+    $bart = new ReservationDataBase;
+    $kon= new ReservationDataBase;
+    if (isset($_GET['resdate'])&&isset($_GET['name']))
+    {
+        echo "<script language='javascript'>alert('MAM TEGO GETA!');</script>";
+        echo($_GET['resdate']);
+        $send = new ReservationDataBase;
+        $send->AddNewTermin($_GET['resdate'],$_GET['name']);
+        echo "<script language='javascript'>window.location.href='index.php';</script>";
+    }
+    
+    ?>
+    <script>
+    var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0');
+var yyyy = today.getFullYear();
+today = yyyy + '-' + mm + '-' + dd;
+    var AktualMonth = new Date().getMonth()+1;
+    var PlusZeroMonth = '0'+AktualMonth;
+    var StartDate = "2019-"+PlusZeroMonth+"-01";
+    var LastDate = "2019-"+PlusZeroMonth+"-31";
+    console.log("MOJ MIESIAC: "+StartDate+" A moja dzisiejsza data to "+today);
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="index.js" defer></script>
+    <script src="index.js"></script>
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" href="mini-event-calendar.min.css">
     <script src="mini-event-calendar.js"></script>
+    <script>
+     $(document).ready(function() {
+        $('#DateReserv').attr('min',StartDate);
+        $('#DateReserv').attr('max',LastDate);
+        $('#DateReserv').attr('value',today);
+    });
+    var tojedata = '2019-07-29';
+    var EventsBartek = [<?php $bart->BartekCallendar()?>];
+    var EventsKonrad = [<?php $kon->KonradCallendar()?>];
+
+
+  //new Date().setDate(new Date('2019-07-20').getDate())
+
+
+    </script>
 </head>
 <body>
 <div id="container">
@@ -101,13 +142,12 @@
     <video autoplay muted loop class="myVideoGallery">
         <source src="images/gallery_theme.mp4" type="video/mp4">
       </video>
-<div id="GalleryFace1"><button id="buttonGallery1"><div class="PhotoContainerGallery" id="P1"></div></button></div>
-<div id="GalleryFace2"><button id="buttonGallery2"><div class="PhotoContainerGallery" id="P2"></div></button></div>
-<div id="GalleryFace3"><button id="buttonGallery3"><div class="PhotoContainerGallery" id="P3"></div></button></div>
-<div id="GalleryFace4"><button id="buttonGallery4"><div class="PhotoContainerGallery" id="P4"></div></button></div>
+<div id="GalleryFace1"><button value="P1" id="buttonGallery1"><div class="PhotoContainerGallery" id="P1"></div></button></div>
+<div id="GalleryFace2"><button id="buttonGallery2" value="P2"><div class="PhotoContainerGallery" id="P2"></div></button></div>
+<div id="GalleryFace3"><button id="buttonGallery3" value="P3"><div class="PhotoContainerGallery" id="P3"></div></button></div>
+<div id="GalleryFace4"><button id="buttonGallery4" value="P4"><div class="PhotoContainerGallery" id="P4"></div></button></div>
 <div id="GalleryInformation">Poszukiwani za swietny fryz!<br>Dla znalazcy wysoka nagroda!</div>
-
-
+<div id="GalleryBlackBackground"><button onclick="GalleryBack();" id="GalleryBack">&#8592;</button><div id="ZoomPhotoGallery"><div class="PhotoContainerGalleryZOOM" id="P1"></div></div></div>
 
 </div>
 
@@ -147,12 +187,19 @@ Wybierz rodzaj uslugi<br>
 </select><br>
 Cena ostateczna:<br>
 <span id="YourPriceReserve">0</span> zl
+<div id="FormReserve">
+    Wpisz Dane do Rezerwacji:
+    <input type="text" id="NameReserv" placeholder="Twoje Imię i Nazwisko">
+    <input type="text" id="TelReserv" placeholder="Numer Telefonu">
+    <span>Wybierz wolna date (bazujac na kalendarzu rezerwacji obok):</span>
+    <input id="DateReserv" type="date" id="DateReserv" min="" max="" value="">
+</div>
         </div>
         <div id="CalendarContainerReserv">
 <div id="calendar">
 
 </div>
-     <button id="AcceptReservation">rezerwuj</button>       
+     <button id="AcceptReservation" >rezerwuj</button>       
         </div>
     </div>
 
@@ -200,7 +247,22 @@ Cena ostateczna:<br>
 
 </body>
 
+<script>
+$("#AcceptReservation").click(function(){
 
+    var mydata = $('#DateReserv').val();
+    var myname = $('#NameReserv').val();
+    var mynameSEND = myname.substr(0,myname.indexOf(' '));
+var mydataString = "`"+mydata+"`";
+    console.log("moja data to:"+mydata);
+    console.log("A STRING DATY TO:"+mydataString);
+console.log("A moje imie to:"+mynameSEND);
+    var data = new Date().setDate(new Date(mydata).getDate());
+    console.log(data);
+
+  window.location.href = "index.php?resdate="+mydataString+"&name="+mynameSEND; 
+});
+</script>
 
 
 
